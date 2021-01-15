@@ -135,8 +135,7 @@ public class AppServlet extends HttpServlet {
         productDAO.deleteProduct(id);
         ArrayList<Product> products = productDAO.getAllProducts();
         req.setAttribute("listProduct",products);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/app/products.jsp");
-        dispatcher.forward(req,resp);
+        resp.sendRedirect("/app");
 
     }
 

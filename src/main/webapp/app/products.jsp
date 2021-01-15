@@ -40,7 +40,8 @@
         <td>${product.getAmount()}</td>
         <td>${product.getColor()}</td>
         <td>${product.getCategoryId()}</td>
-        <td><button ><a href="/app?action=edit&id=${product.getId()}">EDIT</a></button><br><button type="submit">delete</button></td>
+        <td>${product.getDescription()}</td>
+        <td><button ><a href="/app?action=edit&id=${product.getId()}">EDIT</a></button><br><button ><a href="/app?action=delete&id=${product.getId()}">delete</a></button></td>
     </tr>
 </c:forEach>
 </table>
