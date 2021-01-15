@@ -33,8 +33,8 @@
         <td>${product.getPrice()}</td>
         <td>${product.getAmount()}</td>
         <td>${product.getColor()}</td>
-        <td>${product.getCategory()}</td>
-        <td>${product.get()}</td>
+        <td>${product.getCategoryId()}</td>
+<%--        <td>${product.get()}</td>--%>
     </tr>
 </c:forEach>
 </table>

@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="">
+<form  method="post">
     <table>
     <tr>
         <td>Name</td>
@@ -45,7 +45,7 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2" align="center"><button type="submit">ADD</button></td>
+        <td colspan="2" align="center"><button type="submit" value="add">ADD</button></td>
     </tr>
     </table>
 </form>

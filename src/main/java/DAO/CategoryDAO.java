@@ -21,7 +21,7 @@ public class CategoryDAO implements iCategoryDAO {
 
     @Override
     public ArrayList<Category> selectAllCategories() {
-        ArrayList<Category> categories = null;
+        ArrayList<Category> categories = new ArrayList<>();
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();

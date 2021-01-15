@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="/app/products.jsp">GO TO MAIN MENU</a>
+  <a href="/app">GO TO MAIN MENU</a>
   </body>
 </html>

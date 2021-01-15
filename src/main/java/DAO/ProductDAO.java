@@ -20,7 +20,7 @@ public class ProductDAO implements iProductDAO {
 
     @Override
     public ArrayList<Product> getAllProducts() {
-        ArrayList<Product> products = null;
+        ArrayList<Product> products = new ArrayList<>();
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
