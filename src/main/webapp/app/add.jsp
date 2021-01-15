@@ -12,7 +12,12 @@
     <title>Title</title>
 </head>
 <body>
-<form  method="post">
+<div>
+    <c:if test="${requestScope['message'] != null}">
+    <p>${requestScope['message']}</p>
+    </c:if>
+</div>
+<form   method="post">
     <table>
     <tr>
         <td>Name</td>
@@ -37,7 +42,7 @@
     <tr>
         <td>Category</td>
         <td>
-            <select name="" id="">
+            <select name="categories" id="">
                 <c:forEach items="${requestScope['allCategories']}" var="category">
                     <option value="${category.getId()}">${category.getName()}</option>
                 </c:forEach>

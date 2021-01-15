@@ -15,6 +15,12 @@
 <div>
     <a href="/app?action=add">Add new product</a>
 </div>
+<%--<div>--%>
+<%--    <form action="post">--%>
+<%--    Search :<input type="text" name="searchname">--%>
+<%--    <input type="submit" value="search">--%>
+<%--    </form>--%>
+<%--</div>--%>
 <form action="/app">
 <table>
     <tr>
@@ -34,7 +40,7 @@
         <td>${product.getAmount()}</td>
         <td>${product.getColor()}</td>
         <td>${product.getCategoryId()}</td>
-<%--        <td>${product.get()}</td>--%>
+        <td><button ><a href="/app?action=edit&id=${product.getId()}">EDIT</a></button><br><button type="submit">delete</button></td>
     </tr>
 </c:forEach>
 </table>

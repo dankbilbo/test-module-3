@@ -10,7 +10,7 @@ Model/Category.java
  Model.Category
 DAO/iCategoryDAO.java
  DAO.iCategoryDAO
-Controller/AppServlet.java
- Controller.AppServlet
 DAO/ProductDAO.java
  DAO.ProductDAO
+Controller/AppServlet.java
+ Controller.AppServlet

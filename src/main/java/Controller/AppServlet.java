@@ -42,13 +42,14 @@ public class AppServlet extends HttpServlet {
     }
 
     private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         double price = Double.parseDouble(req.getParameter("price"));
         int amount = Integer.parseInt(req.getParameter("amount"));
         String color = req.getParameter("color");
         String desc = req.getParameter("description");
-        int cateId = Integer.parseInt(req.getParameter("category"));
-        Product product = new Product(name,price,amount,color,desc,cateId);
+        int cateId = Integer.parseInt(req.getParameter("categories"));
+        Product product = new Product(id,name,price,amount,color,desc,cateId);
         int result = productDAO.updateProduct(product);
         if (result > 0){
             req.setAttribute("message","success");
@@ -69,7 +70,7 @@ public class AppServlet extends HttpServlet {
         int amount = Integer.parseInt(req.getParameter("amount"));
         String color = req.getParameter("color");
         String desc = req.getParameter("description");
-        int cateId = Integer.parseInt(req.getParameter("category"));
+        int cateId = Integer.parseInt(req.getParameter("categories"));
         Product product = new Product(name,price,amount,color,desc,cateId);
         int result = productDAO.insertProduct(product);
         if (result > 0){
@@ -106,8 +107,26 @@ public class AppServlet extends HttpServlet {
             case "delete":
                     deleteProduct(req,resp);
                 break;
+            case "search":
+                searchProduct(req,resp);
+                        break;
             default:
                 listProducts(req,resp);
+        }
+    }
+
+    private void searchProduct(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("searchname");
+        ArrayList<Product> products = productDAO.getProductsByName(name);
+        ArrayList<Product> allProducts = productDAO.getAllProducts();
+        if (products == null) {
+            req.setAttribute("listproduct", products);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/app/search.jsp");
+            dispatcher.forward(req, resp);
+        }else {
+            req.setAttribute("listproduct", allProducts);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/app/search.jsp");
+            dispatcher.forward(req, resp);
         }
     }
 
@@ -124,9 +143,10 @@ public class AppServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         Product existingProduct = productDAO.selectProduct(id);
+        ArrayList<Category> categories = categoryDAO.selectAllCategories();
+        req.setAttribute("allCategories",categories);
         req.setAttribute("product", existingProduct);
         RequestDispatcher dispatcher = req.getRequestDispatcher("app/edit.jsp");
-        req.setAttribute("user", existingProduct);
         dispatcher.forward(req, resp);
     }
 
